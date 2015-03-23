@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'/>
+    <script type='text/javascript'>function Redirect() {window.location='/search_with_and/';}document.write('The page will refresh every 15 minutes');setTimeout('Redirect()', 900000);</script>
+
+    <style>
+
+        div {
+            direction: rtl;
+            }
+    </style>
+</head>
+<body>
+<div id="empty" style="margin-top:30px;">
+<div class='container'>
+    <div class="jumbotron">
+        <h1 align="middle">Results </h1>
+    </div>
+    <ul class='list-group'>
+    {% for post in latest_question_list %}
+       <div>
+           <li class='list-group-item'>
+               <div class = "row" style="background-color: lightblue">
+                   <div class="col-md-6">
+                       <h4 align="left" >{{post.author}}  |  {{post.group}}</h4>
+                   </div>
+                    <div class="col-md-6">
+                       <h4 align="right">{{post.created_time}}</h4>
+                   </div>
+               </div>
+                    <span class = 'post'>
+                        <h4>{{ post.message }}</h4>
+                   </span>
+           </li>
+       </div>
+        <br>
+    {% endfor %}
+    </ul>
+</div>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script><script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+<script>
+   $( document ).ready(function() {
+        var x = document.getElementsByClassName("post");
+        var i;
+
+       var re = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/igm;
+
+
+        for (i = 0; i < x.length; i++) {
+            if (re.test(x[i].innerHTML)) {
+				var email = x[i].innerHTML.match(re);
+				console.log(email);
+				x[i].innerHTML = x[i].innerHTML.replace(email, '<span style="background:yellow">' + email + "</span>");
+            }
+        }
+	});
+
+    </script>
+</body>
+</html>
