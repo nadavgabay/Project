@@ -4,9 +4,9 @@ import smtplib
 
 class EmailSender:
 
-    fromaddr = '5492nadav@gmail.com'
-    username= "5492nadav"
-    password= "5341843gabay"
+    fromaddr = 'yourfacebookjobsearch@gmail.com'
+    username= "yourfacebookjobsearch"
+    password= "duda1234"
 
 
     def __init__(self,userEmailAddress):
